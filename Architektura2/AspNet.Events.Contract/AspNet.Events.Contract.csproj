@@ -40,8 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\BaseDto.cs" />
+    <Compile Include="Dto\EventDtoResult.cs" />
+    <Compile Include="Dto\EventDto.cs" />
     <Compile Include="Dto\EventTypeDto.cs" />
     <Compile Include="Dto\EventTypeDtoResult.cs" />
+    <Compile Include="Dto\InvitedFriendDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IDependency.cs" />
     <Compile Include="Services\IEventService.cs" />

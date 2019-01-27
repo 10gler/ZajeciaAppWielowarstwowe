@@ -1,5 +1,6 @@
 ﻿using AspNet.Events.Contract.Dto;
 using AspNet.Events.Contract.Services;
+using AspNET.GenericRepository.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,37 @@ namespace AspNET.GenericRepository.Controllers
         public EventTypeController(IEventService eventService)
         {
             _eventService = eventService;
-            _eventService.AddEventType(new EventTypeDto { Name = "Test" });
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(EventTypeViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _eventService.AddEventType(new EventTypeDto
+                {
+                    Name = model.Name
+                });
+                return RedirectToAction("Index");
+            }
+            return View(model);       
         }
 
         // GET: EventType
         public ActionResult Index()
         {
-            return View();
+            var events = _eventService.GetEventTypes().Select(n => new EventTypeViewModel
+            {
+                Id = n.Id,
+                Name = n.Name
+            });
+
+            return View(events);
         }
     }
 }

@@ -11,5 +11,9 @@ namespace AspNet.Events.Contract.Services
     {
         void AddEventType(EventTypeDto eventTypeDto);
         IList<EventTypeDtoResult> GetEventTypes();
+
+        List<EventDtoResult> GetEvents();
+        void AddEvent(EventDto eventDto);
+        //...
     }
 }
